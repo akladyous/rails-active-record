@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_16_212901) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_16_213624) do
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "foreignname_id", null: false
+    t.index ["foreignname_id"], name: "index_countries_on_foreignname_id"
   end
 
   create_table "foreignnames", force: :cascade do |t|
@@ -30,4 +32,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_16_212901) do
     t.index ["nick_name"], name: "index_foreignnames_on_nick_name"
   end
 
+  add_foreign_key "countries", "foreignnames"
 end
