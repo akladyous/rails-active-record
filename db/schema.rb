@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_16_193722) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_16_210220) do
   create_table "foreignnames", force: :cascade do |t|
     t.string "first_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"
-    t.integer "counter"
+    t.integer "counter", default: 0
     t.string "nick_name"
     t.string "prefix"
     t.string "full_name"
+    t.string "origin"
     t.index ["nick_name"], name: "index_foreignnames_on_nick_name"
   end
 
