@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_17_222602) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_17_225236) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -40,6 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_17_222602) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "students_count", default: 0
+    t.integer "status", limit: 2
+    t.index ["status"], name: "index_courses_on_status"
   end
 
   create_table "courses_students", id: false, force: :cascade do |t|
