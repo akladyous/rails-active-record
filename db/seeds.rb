@@ -26,6 +26,12 @@ end
     end
 end
 
+10.times do
+    Teacher.create do |teacher|
+        teacher.name = Faker::Name.first_name
+    end
+end
+
 # 10.times do 
 #     Company.create! do |company|
 #         company.name = Faker::Company.name
