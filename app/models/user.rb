@@ -8,5 +8,6 @@ class User < ApplicationRecord
     scope :all_roles, -> { unscope(where: :supervisor) }
     scope :subordinates_role, -> { where.not( supervisor: nil )}
 
-
+    enum role: {user: 0, admin: 1, manager: 2, guest: 3}
+    
 end
