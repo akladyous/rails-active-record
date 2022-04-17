@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_16_220345) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_17_003011) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -23,6 +23,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_16_220345) do
     t.datetime "updated_at", null: false
     t.integer "foreignname_id", null: false
     t.index ["foreignname_id"], name: "index_countries_on_foreignname_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses_students", id: false, force: :cascade do |t|
+    t.integer "course_id", null: false
+    t.integer "student_id", null: false
+    t.index ["course_id", "student_id"], name: "index_courses_students_on_course_id_and_student_id"
+    t.index ["student_id", "course_id"], name: "index_courses_students_on_student_id_and_course_id"
   end
 
   create_table "foreignnames", force: :cascade do |t|
@@ -55,6 +70,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_16_220345) do
     t.datetime "updated_at", null: false
     t.string "color"
     t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "countries", "foreignnames"
