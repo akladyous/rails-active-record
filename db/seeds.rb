@@ -26,7 +26,7 @@ end
     end
 end
 
-50.times do
+25.times do
     Teacher.create do |teacher|
         teacher.name = Faker::Name.first_name
     end
@@ -43,6 +43,18 @@ end
                 user.email = Faker::Internet.username(specifier: 5..10)
                 user.active = [true, false].sample
                 user.role = [:user, :admin].sample
+            end
+        end
+    end
+end
+
+
+10.times do 
+    Student.create do |student|
+        student.name = Faker::Name.name
+        5.times do
+            student.courses.new do |course|
+                course.name = Faker::Educator.subject
             end
         end
     end
