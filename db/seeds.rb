@@ -26,24 +26,24 @@ end
     end
 end
 
-10.times do
+50.times do
     Teacher.create do |teacher|
         teacher.name = Faker::Name.first_name
     end
 end
 
-# 10.times do 
-#     Company.create! do |company|
-#         company.name = Faker::Company.name
-#         company.founded_on = Faker::Date.between(from: 10.years.ago, to: Date.today)
-#         10.times do
-#             company.users.new do |user|
-#                 user.first_name = Faker::Name.first_name
-#                 user.last_name = Faker::Name.last_name
-#                 user.email = Faker::Internet.username(specifier: 5..10)
-#                 user.active = [true, false].sample
-#                 user.role = [:user, :admin].sample
-#             end
-#         end
-#     end
-# end
+5.times do 
+    Company.create! do |company|
+        company.name = Faker::Company.name
+        company.founded_on = Faker::Date.between(from: 10.years.ago, to: Date.today)
+        5.times do
+            company.users.new do |user|
+                user.first_name = Faker::Name.first_name
+                user.last_name = Faker::Name.last_name
+                user.email = Faker::Internet.username(specifier: 5..10)
+                user.active = [true, false].sample
+                user.role = [:user, :admin].sample
+            end
+        end
+    end
+end

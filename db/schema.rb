@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_17_154724) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_17_160500) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "products_count", default: 0
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.date "founded_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "countries", force: :cascade do |t|
@@ -90,6 +97,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_17_154724) do
     t.index ["supervisor_id"], name: "index_teachers_on_supervisor_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.string "email"
+    t.boolean "active"
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
   add_foreign_key "countries", "foreignnames"
   add_foreign_key "products", "categories"
+  add_foreign_key "users", "companies"
 end
