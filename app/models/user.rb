@@ -9,5 +9,6 @@ class User < ApplicationRecord
     scope :subordinates_role, -> { where.not( supervisor: nil )}
 
     enum role: {user: 0, admin: 1, manager: 2, guest: 3}
-    
+
+    delegate :name, to: :company, prefix: true, allow_nil: true
 end
