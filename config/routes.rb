@@ -1,21 +1,38 @@
 Rails.application.routes.draw do
-    #   get 'users/index'
-    #   get 'users/show'
-    #   get 'users/update'
-    #   get 'users/destroy'
-    
-    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-    
-    # Defines the root path route ("/")
-    # root "articles#index"
-    
-    # get 'users/index'
-    # get 'users/show'
-    # resources :users
+    # resources :dogs,
+    #     path: "animal/dogs",
+    #             path_names: {
+    #                 new: "nuovo",
+    #                 edit: "modifica"
+    #             },
+    #             param: "identifier"
+    #             # defaults: {
+    #             #     format: "json",
+    #             # }
 
-    resources :dogs
-    # get "dogs/:id", controller: :dogs, action: :show
-    # get "dogs/:id", to: "dogs#show", as: "dog"
-    # get "dogs", to: "dogs#index"
-    # get "dogs/new", to: "dogs#new", as: "new_dog"
+        
+    # get     "dogs",             to: "dogs#index",   as: "dogs"
+    # get     "dogs/new",         to: "dogs#new",     as: "new_dog"
+    # get     "dogs(/:id)",         to: "dogs#show",    as: "dog"
+    # get     "dogs/:id/edit",    to: "dogs#edit",    as: "edit_dog"
+    # post    "dogs",             to: "dogs#create",  as: "create_dog"
+    # patch   "dogs/:id",         to: "dogs#update",  as: "patch_dog"
+    # put     "dogs/:id",         to: "dogs#update",  as: "put_dog"
+    # delete  "dogs/:id",         to: "dogs#destroy", as: "destroy_dog"
+
+    # defaults format: :json do
+        namespace :api, path: "prova" do
+            resources :users do
+                # resources :cats, shallow: true
+                # member do
+                #     get "preview"
+                # end
+                collection do
+                    post "login"
+                    delete "logout"
+                end
+            end
+        end
+    # end
 end
+
