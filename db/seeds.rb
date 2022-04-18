@@ -59,3 +59,9 @@ end
         end
     end
 end
+
+50.times do 
+    Dog.create do |dog|
+        dog.name = Faker::Creature::Animal.name
+    end
+end
